@@ -66,6 +66,7 @@ public class Island {
                 Integer markGully = this.walkAdditionsPerimeter(perimeter.get(perimeterIterator).getIndex(), "markGully");
 
                 perimeter.get(perimeterIterator).setLastGullyCount(markGully);
+                lastCheck = lastCheck && markGully.equals(currentPerimeterLastGullyCount);
                 if (markGully == 0) {
                     if (lastCheck) {
                         search = false;
@@ -90,9 +91,6 @@ public class Island {
                         lastCheck = true;
                         perimeterIterator = 0;
                     }
-                }
-                else if (lastCheck) {
-                    lastCheck = markGully.equals(currentPerimeterLastGullyCount);
                 }
 
                 if (perimeterIterator >= perimeter.size()) {
